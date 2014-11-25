@@ -283,7 +283,10 @@ class SwimConvert {
             $altitude_adjustment = isset($_POST['altitude_adjustment']) ? $_POST['altitude_adjustment'] : '';
 
             // Error detection
-            if (($minutes <= 0 && $seconds <= 0 && $hundredths <= 0) || empty($event) || strpos($event, '_') === false) {
+            if ($event == null) { 
+                 //No event slected
+				$this->_current_conversion_errors[] = 'Please select an event to convert';
+            } elseif (($minutes <= 0 && $seconds <= 0 && $hundredths <= 0) || empty($event) || strpos($event, '_') === false) {
                 // No time entered
                 $this->_current_conversion_errors[] = 'Please enter a time to convert.';
             } elseif ((!empty($course_from) && !empty($course_to)) && $course_from == $course_to) {
