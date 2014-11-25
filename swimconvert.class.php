@@ -301,7 +301,7 @@ class SwimConvert {
             }
 
             // Set the current conversion details to the class variable for processing by other methods
-            list($distance, $stroke) = explode('_', $event, 2);
+            list($distance, $stroke) = array_pad(explode('_', $event, 2), 2, null);
             $this->_current_conversion = array(
                 'minutes'             => $minutes,
                 'seconds'             => $seconds,
